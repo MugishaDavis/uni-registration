@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+        <h1>Welcome to the University Website</h1>
+       <a href="{% url 'registration:apply' %}"><button class="apply">Apply now</button></a> 
+        
+        <a href="{% url 'registration:login' %}"><button class="login">Login</button></a>
+        
+
+</div>
+
+{% endblock %}

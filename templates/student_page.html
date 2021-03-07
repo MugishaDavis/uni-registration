@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <nav>
+        <h1>Welcome {{ student.name }}</h1>
+        You are currently in {{ current_dep.name }}. 
+        Change your department here
+        
+            <form action="{% url 'registration:cd' %}" method="POST">
+                {% csrf_token %}
+                <select name="id" id="">
+                    {% for department in departments %}
+                        <option value="{{ department.id }}">{{ department.name }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="CD">
+            </form>      
+            
+            <form action="{% url 'registration:logout' %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="logout" value="LOGOUT">
+            </form>
+        
+            
+  
+    
+    </nav>
+</div>
+
+{% endblock %}

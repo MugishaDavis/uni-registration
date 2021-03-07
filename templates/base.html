@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+    <head>
+        <title>University</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <div class="header">
+    <body>
+        <header>
+           <a href="{% url 'registration:home' %}"> <img src="{% static 'logo.png' %}" alt="" class="logo">
+           </a>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </body>
+    </div>
+</html>

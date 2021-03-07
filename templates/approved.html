@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <a href="{% url 'registration:dashboard' %}">All applications</a>
+    <a href="{% url 'registration:approved' %}">Approved Applications</a>
+    <a href="{% url 'registration:pending' %}">Pending Applications</a>
+    <h2>Approved applications:</h2>
+    
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>department</td>
+            <td>Email</td>
+            <td>Date</td>
+        </tr>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.name }}</td>
+            <td>{{ application.department }}</td>
+            <td>{{ application.email }}</td>
+            <td>{{ application.date }}</td>
+
+        </tr>
+    </table>
+
+    
+    {% endfor %}
+</div>
+{% endblock %}

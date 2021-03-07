@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <a href="{% url 'registration:dashboard' %}">All applications</a>
+    <a href="{% url 'registration:approved' %}">Approved Applications</a>
+    <a href="{% url 'registration:pending' %}">Pending Applications</a>
+    <h2>Pending applications:</h2>
+
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>department</td>
+            <td>Email</td>
+            <td>Date</td>
+            <td>Action</td>
+        </tr>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.name }}</td>
+            <td>{{ application.department.name }}</td>
+            <td>{{ application.email }}</td>
+            <td>{{ application.date }}</td>
+            <td>
+                <form action="{% url 'registration:approve' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{application.id}}">
+                    <button type="submit">Approve</button>
+                </form>
+            </td>
+            <td>
+                <form action="{% url 'registration:delete' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{application.id}}">
+                    <button type="submit">Reject</button>
+                </form>
+            </td>
+            
+                <form action="{% url 'registration:logout' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" name="logout" value="LOGOUT">
+                </form>
+            
+
+        </tr>
+    </table>
+
+    
+    {% endfor %}
+</div>
+{% endblock %}

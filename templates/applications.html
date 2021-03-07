@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h2>Applications:</h2>
+    <a href="{% url 'registration:approved' %}">Approved Applications({{nbr_approved}})</a>
+    <a href="{% url 'registration:pending' %}">Pending Applications({{nbr_pending}})</a>
+    
+        <form action="{% url 'registration:logout' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="logout" value="LOGOUT">
+        </form>
+    
+</div>
+{% endblock %}
